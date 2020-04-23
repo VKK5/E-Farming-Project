@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'bazaar/bazbase.html' %}
+{% load static %}
+<html>
+<head>
+	<title>Products</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazproducts.css' %}">
+{% endblock %}
+	
+</head>
+<body>
+   
+{% block content %}
+
+  <div class="container-fluid jumbotron products">
+
+    <h1 style="text-align: center;font-size: 80px;margin-bottom: 2vw;font-family: 'Kalam',cursive; font-style: italic;color:#ffffff;text-decoration: underline;">Products</h1>
+
+  <div class="cta filter">
+
+   <div class="list" style="margin-bottom: 5vw;text-align: center;">
+    <ul>
+    <li class="all active" data-filter="all">All</li>
+    <li class="fertilizers" data-filter="fertilizers">Fertilizers</li>
+    <li class="pesticides" data-filter="pesticides">Pesticides</li>
+    <li class="grainseeds" data-filter="grainseeds">Grain Seeds</li>
+    <li class="organicseeds" data-filter="organicseeds">Organic Seeds</li>
+    </ul>
+    
+   </div>
+
+</div>
+
+<div class="boxes row d-flex justify-content-center">
+
+
+    <!-- other anchor/boxes here ... -->
+   
+    {% for prod in prods %}
+     
+    <div class="total col-lg-3 col-md-4 col-sm-12 text-center mr-2 mb-5" data-category="{{prod.cat}}">
+   
+         <div class="images">
+             <a class="prod.cat" href="proddetails/{{prod.id}}"><img class="img-fluid" src="{{prod.img.url}}" alt="image"></a>
+             <h3 style="text-align: center; margin-bottom: 0px; padding: 5px 5px;">Rs.{{prod.price}}/-</h3>
+         </div>
+   
+         <h3 style="text-align: center;"><a href="proddetails/{{prod.id}}" style="color: #ffffff" onMouseOver="this.style.color='#ff4301'" onMouseOut="this.style.color='#ffffff'">{{prod.name}}</a></h3>
+   
+      </div>
+      
+    
+     {% endfor %} 
+   
+   </div>
+   
+
+</div>
+
+{% endblock %}
+
+
+  {% block js %}
+  <script type="text/javascript" src="{%static 'bazaar/js/bazproducts.js' %}"></script>
+{% endblock %}
+
+</body>
+</html>

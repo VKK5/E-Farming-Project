@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'bazaar/bazbase.html' %}
+{% load static %}
+<html>
+<head>
+	<title>About</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+  {% block styles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazabout.css' %}">
+{% endblock %}
+	
+</head>
+<body>
+
+{% block content %}
+
+<div class="container-fluid jumbotron row about">   <!-- style="padding-top: 90px; "-->
+  <div class="col-lg-6 aboutinfo">   <!--padding-bottom: 75px;-->
+
+  	<h1>About Us</h1>
+     <p>We have a lot of great new things for you but overall, the Farm Program we created in 2014 will remain.</p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <div class="col-lg-6"> 
+    <img src="{% static 'bazaar/images/aboutimage.png' %}" class="img-fluid" style="max-width: 90%">
+  </div>
+  
+</div>
+
+{% endblock %}
+</body>
+</html>

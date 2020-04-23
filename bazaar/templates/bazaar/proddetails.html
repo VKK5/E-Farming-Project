@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% extends 'bazaar/bazbase.html' %}
+{% load static %}
+<html>
+<head>
+	<title>Product Page</title>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/proddetails.css' %}">
+{% endblock %}
+
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+      -->
+
+	
+
+</head>
+<body>
+  
+	{% block content %}
+
+<div class="container-fluid jumbotron row">
+   <div class="col-lg-5 col-md-5 col-sm-12">
+   <!--	<div class="imgdiv">
+          <a class="fertilizers" href="#"><img class="img-fluid" src="algaetech.jpg" alt="image"></a>
+          <h3 style="text-align: center; margin-bottom: 0px; padding: 5px 5px;">Rs.290/-</h3>
+      </div>
+
+  -->
+  
+   <div class="imgdiv"> 
+     <img class="img-fluid" src="{{product.img.url}}" alt="product image">
+    </div>
+   
+   </div>
+    
+   <div class="col-lg-6  col-md-6 col-sm-12" style="margin-left: 7%;">   <!--padding-bottom: 75px;-->
+	  <br>
+	<div class="productname">
+	<em><h1 style="color: blue;">{{product.name}}</h1></em>
+	</div>
+    <div class="staticratings">
+    <br>
+    <b> <h3> Rs.{{product.price}}/- </h3></b>
+    <span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star checked"></span>
+	<span class="fa fa-star"></span>
+	<span class="fa fa-star"></span>
+
+	</div>
+	<br>
+    <em>
+    <h3>Description : </h3>
+    <p>{{product.desc}}</p>
+    </em>
+    <div>
+    	<span style="font-style: italic; font-weight: bold; font-size: 20px;">category : </span> {{product.cat}}
+	</div>
+	
+
+    <br>
+
+   
+     
+    <br>
+
+	<div class="cartclass">
+		
+        <a href="{% url 'addtocart' product.id %}" class="btn btn-primary">Add to Cart</a>
+    	<!-- <button type="button" class="btn btn-primary">Add To Cart</button> -->
+	</div>
+
+    <br>
+    
+		   <div class="userrating">
+		      
+		     <div style="font-style: italic; font-weight: bold; font-size: 20px;">Rate the product : </div>
+		    
+		      <form class="rating">
+		  <label>
+		    <input type="radio" name="stars" value="1" />
+		    <span class="icon">★</span>
+		  </label>
+		  <label>
+		    <input type="radio" name="stars" value="2" />
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		  </label>
+		  <label>
+		    <input type="radio" name="stars" value="3" />
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>   
+		  </label>
+		  <label>
+		    <input type="radio" name="stars" value="4" />
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		  </label>
+		  <label>
+		    <input type="radio" name="stars" value="5" />
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		    <span class="icon">★</span>
+		  </label>
+		</form>
+
+		   
+		  </div>
+
+
+ </div>
+  
+</div>
+  
+  {% endblock %}
+
+ 
+
+  {% block js %}
+  <script type="text/javascript" src="{% static 'bazaar/js/proddetails.js' %}"></script>
+  {% endblock %}
+  
+
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'bazaar/bazbase.html' %}
+{% load static %}
+<html>
+<head>
+	<title>Home</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazhome.css' %}">
+    {% endblock %}
+	
+</head>
+<body>
+
+ {% block content %}
+    
+<div id="carouselsection">
+<div id="demo" class="carousel slide" data-ride="carousel" data-interval="3000">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+      <img  class="img-fluid" src="{%static 'bazaar/images/organicproducts.jpg' %}" alt="organicproducts">
+
+                     <div class="carousel-caption">
+                               <h1><span>Organic</span> products</h1>
+                                <h1>directly from the farm.</h1>
+                        </div>
+    
+    </div>
+
+    <div class="carousel-item">
+      <img  class="img-fluid" src="{%static 'bazaar/images/fruitseeds.jpg' %}" alt="fruitseeds">
+ 
+                          <div class="carousel-caption">
+                               <h1><span>Fertilizers</span></h1>
+                               <h1>freshly for clients.</h1>
+                        </div>
+     
+    </div>
+
+    <div class="carousel-item">
+      <img  class="img-fluid" src="{%static 'bazaar/images/vegetableseeds.jpg' %}" alt="vegetableseeds">
+
+                       <div class="carousel-caption">
+                               <h1><span>Pesticides</span></h1>
+                                <h1>The natural ingredients.</h1>
+                        </div>
+     	
+     </div>
+     
+    
+    <div class="carousel-item">
+      <img  class="img-fluid" src="{%static 'bazaar/images/differentseeds.jpg' %}" alt="differentseeds">
+
+                        <div class="carousel-caption">
+                               <h1>Different <span>crops</span></h1>
+                               <h1>Over 50 different crops.</h1>
+                        </div>
+     
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+
+</div>
+
+</div>
+{% endblock %}
+<!--
+{% block js %}
+  <script type="text/javascript" src="{% static '/bazaar/js/bazhome.js' %}"></script>
+  {% endblock %}-->
+</body>
+</html>

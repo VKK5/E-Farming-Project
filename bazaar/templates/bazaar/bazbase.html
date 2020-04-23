@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart_tag %}
+<html>
+<head>
+    <title>Bazaar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazbase.css' %}">
+    {% block styles %}
+    {% endblock %}
+  
+    <!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazbase.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazhome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazproducts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazabout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/proddetails.css' %}">
+  -->
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" >
+
+ 
+        <span class="navbar-brand mb-0 h1" style="font-size: 3vw;"> <img class="image" src="{% static 'bazaar/images/pic1.jpg' %}" width="60" height="60">
+       
+        <span class="brandforcolours" style="width: auto; color: blue;">E-Farming Portal</span></span>
+       
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+       
+       
+             <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav ml-auto">
+                 <li class="nav-item"><a class="nav-link a {% if request.resolver_match.url_name == 'bazhome' %}active{% endif %}" href="{% url 'bazhome' %}">Home<span class="sr-only">(current)</span></a></li>
+                 <li class="nav-item"><a class="nav-link b {% if request.resolver_match.url_name == 'bazabout' %}active{% endif %}" href="{% url 'bazabout' %}">About</a></li>
+                 <li class="nav-item"><a class="nav-link c {% if request.resolver_match.url_name == 'bazproducts' %}active{% endif %}" href="{% url 'bazproducts' %}">Products</a></li>
+                
+                 {% if request.user.is_authenticated %}
+                 <li class="nav-item"><a class="nav-link d {% if request.resolver_match.url_name == 'carthome' %}active{% endif %}" href="{% url 'carthome' %}">My Cart<span> ( {{ request.user| cart_total }} )</span></a></li>
+                 {% endif %}
+                {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link e {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Logout</a></li>
+                <li>Hello, {{user.first_name}}</li>
+                {% else %}
+
+                 <li class="nav-item"><a class="nav-link f {% if request.resolver_match.url_name == 'register' %}active{% endif %}" href="{% url 'register' %}">Register</a></li>
+                 <li class="nav-item"><a class="nav-link g {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+                 {% endif %}
+               </ul>
+             </div>
+           </nav>
+
+
+    {% block content %}
+
+    {% endblock %}
+       
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+    
+    <!--<script type="text/javascript" src="{% static 'bazaar/js/bazbase.js' %}"></script>-->
+    {% block js %}
+    {% endblock %}
+
+    
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+.checked {
+    color: orange;
+  }
+  
+  
+  .container-fluid {
+  
+      margin: auto;
+      background-color:#96fac3;
+     
+   }
+/*
+   .leftimgdiv
+   {
+     margin-right: 50px;
+   }
+
+   .rightinfodiv
+   {
+     margin-left: 50px;
+   }
+  */
+  
+  /*.imgdiv
+  {
+      border: 2px solid #333;
+      line-height: 260px;
+  }
+  */
+  .imgdiv{
+  
+    
+    border: 2px solid #333;
+    background-color: #ffffff;
+    line-height: 550px;
+  
+  }
+  
+  .imgdiv img
+  {
+      background: cover;
+      width: 550px;
+      height: 550px;
+  }
+  
+  
+   .information
+   {
+       border: 1px solid #f54242;
+   }
+  
+   /*
+   .container-fluid img
+   {
+       background: cover;
+      width: 90%;
+      height: 90%;
+   }
+  */
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button
+  {
+      opacity: 1;
+      border: 3px solid black;
+      color: black;
+      
+  }
+  
+  input[type=number]
+  {
+      border: 2px solid orange;
+  }
+  
+  
+  
+  
+  .rating {
+    display: inline-block;
+    position: relative;
+    height: 100px;
+    line-height: 50px;
+    font-size: 30px;
+  }
+  
+  .rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .rating label:last-child {
+    position: static;
+  }
+  
+  .rating label:nth-child(1) {
+    z-index: 5;
+  }
+  
+  .rating label:nth-child(2) {
+    z-index: 4;
+  }
+  
+  .rating label:nth-child(3) {
+    z-index: 3;
+  }
+  
+  .rating label:nth-child(4) {
+    z-index: 2;
+  }
+  
+  .rating label:nth-child(5) {
+    z-index: 1;
+  }
+  
+  .rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .rating label .icon {
+    float: left;
+    color: transparent;
+  }
+  
+  .rating label:last-child .icon {
+    color: #000;
+  }
+  
+  .rating:not(:hover) label input:checked ~ .icon,
+  .rating:hover label:hover input ~ .icon {
+    color: orange;        /*#09f;*/
+  }
+  
+  .rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px orange;
+  }

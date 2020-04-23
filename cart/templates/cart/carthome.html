@@ -1,0 +1,60 @@
+{% extends 'bazaar/bazbase.html' %}
+
+{% block content %}
+<div style="width:100%; height:100%;">
+<div class="container-fluid jumbotron my-0" style="background-color: #f5ffc4 !important;">
+<div class="my-5">
+	<h2>Your Cart</h2>
+</div>
+{% if carts %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  	{% for cart in carts %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ cart.item.name }}</td>
+      <td>
+        <a class="mr-2" href="{% url 'decreasecart' cart.item.id %}"><span class="badge badge-secondary">-</span></a>
+      {{ cart.quantity }}
+      <a class="ml-2" href="{% url 'addtocart' cart.item.id %}" ><span class="badge badge-secondary">+</span></a>
+      </td>
+      <td>${{ cart.get_total }}</td>
+      <td><a href="{% url 'removefromcart' cart.item.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+    </tr>
+	{% endfor %}
+    <tr>
+      <th scope="row"></th> 
+      <td colspan="2">Total</td>
+      <td>${{ order.get_totals| floatformat:2 }}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td colspan="3" class="text-right ">
+        <a href="{% url 'bazproducts' %}" class="btn btn-warning mr-4" >Continue Shoping</a>
+        <button class="btn btn-success mr-4">Proceed To Checkout</button>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+{% else %}
+    <p> You have no items to show</p>
+    <a href="{% url 'bazproducts' %}" class="btn btn-warning mr-4" >Continue Shoping</a>
+
+{% endif %}
+
+</div>
+</div>
+{% endblock %}
