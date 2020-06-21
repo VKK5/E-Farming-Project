@@ -2,10 +2,45 @@
 
 It is an online store for farmers to buy Fertilizers, Pesticides, Organic seeds and Grain seeds.
 
-In order to run the project, create a virtual environment first.
+Open your command line and follow the below steps.
 
-Then run the command "pip install requirements.txt" in your virtual environment.
 
-If the above command does not work, then run the command "pip install -r requirements.txt" in your virtual environment.
+Step 1 : 
 
-Now you can run the project.
+git clone https://github.com/VKK5/E-Farming-Project.git
+
+
+
+Step 2 : Create a virtual environment
+
+mkvirtualenv efarmingenv
+
+
+Step 3 : 
+
+workon efarmingenv
+
+
+Step 4 : Install Requrements.txt
+
+pip install -r requirements.txt
+
+
+Step 5 : Change to your project directory
+
+cd E-Farming-Project
+
+
+Step 6 : Now you can run the server.
+
+python manage.py runserver
+
+
+
+
+
+
+
+
+
+
