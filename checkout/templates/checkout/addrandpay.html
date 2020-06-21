@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'bazaar/bazbase.html' %}
+
+{% load crispy_forms_tags %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Address and Payment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  </head>
+  <body>
+    {% block content %}
+    <h1>Fill out the form!</h1>
+    <div class="container jumbotron">
+      <form method="POST" action="">
+          {{ form|crispy }}
+          {% csrf_token %}
+
+      <input type="submit" class="btn btn-primary" value="Submit"> 
+      <!-- <a href="{% url 'thankyou' %}"><input type="submit" class="btn btn-primary" value="Submit"></a>-->
+       <!-- <a href="{% url 'thankyou' %}" class="btn btn-primary">Submit</a> -->
+      </form>
+    </div>
+
+    {% endblock %}
+  </body>
+</html>

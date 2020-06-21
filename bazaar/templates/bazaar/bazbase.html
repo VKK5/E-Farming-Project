@@ -11,16 +11,7 @@
     {% block styles %}
     {% endblock %}
   
-    <!--
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazbase.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazhome.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazproducts.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/bazabout.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bazaar/styles/proddetails.css' %}">
-  -->
+    
 </head>
 <body>
 
@@ -45,14 +36,15 @@
                 
                  {% if request.user.is_authenticated %}
                  <li class="nav-item"><a class="nav-link d {% if request.resolver_match.url_name == 'carthome' %}active{% endif %}" href="{% url 'carthome' %}">My Cart<span> ( {{ request.user| cart_total }} )</span></a></li>
+                 <li class="nav-item"><a class="nav-link e {% if request.resolver_match.url_name == 'myorderhome' %}active{% endif %}" href="{% url 'myorderhome' %}">My Orders<span> ( {{ request.user| myorders_total }} )</span></a></li>
                  {% endif %}
                 {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link e {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Logout</a></li>
+                <li class="nav-item"><a class="nav-link f {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="{% url 'logout' %}">Logout</a></li>
                 <li>Hello, {{user.first_name}}</li>
                 {% else %}
 
-                 <li class="nav-item"><a class="nav-link f {% if request.resolver_match.url_name == 'register' %}active{% endif %}" href="{% url 'register' %}">Register</a></li>
-                 <li class="nav-item"><a class="nav-link g {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+                 <li class="nav-item"><a class="nav-link g {% if request.resolver_match.url_name == 'register' %}active{% endif %}" href="{% url 'register' %}">Register</a></li>
+                 <li class="nav-item"><a class="nav-link h {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
                  {% endif %}
                </ul>
              </div>

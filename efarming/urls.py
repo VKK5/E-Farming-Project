@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from bazaar import views
 from accounts import views
 from cart import views
+from checkout import views
 
 
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
     path('bazaar/',include('bazaar.urls')),
     path('accounts/',include('accounts.urls')),
     path('cart/',include('cart.urls')),
+    path('checkout/',include('checkout.urls')),
 ]
 
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

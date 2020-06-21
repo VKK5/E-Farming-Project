@@ -1,0 +1,73 @@
+{% extends 'bazaar/bazbase.html' %}
+
+{% block content %}
+
+
+<div style="width:100%; height:100%;">
+<div class="container-fluid jumbotron my-0" style="background-color: #f5ffc4 !important;">
+<div class="my-5">
+	<em> <h2 style="color: red;">Your Orders</h2> </em>
+</div>
+{% if orders %}
+<div class="table-responsive">
+<table class="table table-hover" style="border: 1px solid black; border-top: 2px solid black;">
+  <thead style="background-color: #deff70;">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Created</th>
+      <th scope="col">Status</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  	{% for order in orders %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{order.user.first_name}} {{order.user.last_name}}</td>
+      <td>{{order.user.email}}</td>
+      <td>{{order.created}}</td>
+      <td>
+        {% if order.ordered == True %}
+           Confirmed
+        {% else %}
+           Cancelled
+        {% endif %}
+        </td>
+      <td>${{ order.get_totals| floatformat:2 }}</td>
+      <td>
+        <a href="{% url 'ordereditems' order.id %}" class="btn btn-info">View</a>
+        {% if order.ordered == True %}
+        <a href="{% url 'cancelorder' order.id %}" class="btn btn-danger">Cancel Order</a>
+        {% endif %}
+      </td>
+      
+    
+    
+    </tr>
+	{% endfor %}
+    
+  </tbody>
+</table>
+
+</div>
+
+<div class="text-right">
+  <a href="{% url 'bazproducts' %}" class="btn btn-warning mr-4" >Continue Shoping</a>
+</div>
+
+{% else %}
+    <p> You have no orders to show</p>
+    <a href="{% url 'bazproducts' %}" class="btn btn-warning mr-4" >Continue Shoping</a>
+
+{% endif %}
+
+</div>
+</div>
+
+
+<!--  <h1>HI</h1>  -->
+{% endblock %}

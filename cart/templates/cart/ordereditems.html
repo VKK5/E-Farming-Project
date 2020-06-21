@@ -1,0 +1,100 @@
+{% extends 'bazaar/bazbase.html' %}
+
+{% block content %}
+<div style="width:100%; height:100%;">
+<div class="container-fluid jumbotron my-0" style="background-color: #f5ffc4 !important;">
+
+
+
+  <div class="my-5">
+    <em> <h2 style="color: red;">Customer and Order details</h2> </em>
+  </div>
+     
+     <table class="table col-lg-6" style="border: 1px solid black; border-top: 2px solid black;" >
+       <tbody>
+         <tr>
+           <th>Order ID</th>
+           <td>{{order.id}}</td>
+         </tr>
+  
+         <tr>
+           <th>Date and Time</th>
+           <td>{{order.created}}</td>
+         </tr>
+         
+         <tr>
+           <th>Customer Name</th>
+           <td>{{order.user.first_name}} {{order.user.last_name}}</td>
+         </tr>
+  
+         <tr>
+           <th>Email</th>
+           <td>{{order.user.email}}</td>
+         </tr>
+         
+          <tr>
+            <th>Order Status</th>
+            {% if order.ordered == True %}
+               <td>Confirmed</td>
+            {% else %}
+                <td>Cancelled</td>
+            {% endif %}
+            </tr>
+  
+       </tbody>
+     </table>
+     
+
+
+<div class="my-5">
+ <em>	<h2 style="color: red;">Your Ordered Items</h2> </em>
+</div>
+
+{% if carts %}
+<table class="table table-hover" style="border: 1px solid black; border-top: 2px solid black;">
+  <thead style="background-color: #deff70;">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+  	{% for cart in carts %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ cart.item.name }}</td>
+      <td>
+        {{ cart.quantity }}
+      </td>
+      <td>${{ cart.get_total }}</td>
+       </tr>
+	{% endfor %}
+    <tr>
+      <th scope="row"></th> 
+      <td colspan="2">Total</td>
+      <td>${{ order.get_totals| floatformat:2 }}</td>
+      
+    </tr>
+   
+  </tbody>
+</table>
+
+<a href="{% url 'myorderhome' %}" class="btn btn-secondary mr-4" >Back</a>
+
+<div class="text-right">
+<a href="{% url 'cancelorder' order.id %}" class="btn btn-danger">Cancel Order</a>
+</div>
+
+{% else %}
+    <p> You have no items to show</p>
+    <a href="{% url 'bazproducts' %}" class="btn btn-warning mr-4" >Continue Shoping</a>
+
+{% endif %}
+
+</div>
+</div>
+{% endblock %}

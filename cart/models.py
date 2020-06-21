@@ -11,6 +11,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
+    purchased = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
 
@@ -29,7 +30,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user.username
+        return f'Order id {self.id} of {self.user.username}'
 
     def get_totals(self):
         total = 0
