@@ -5,48 +5,12 @@ from checkout.models import Addressandpayment
 from django.contrib import messages
 from django.http import HttpResponse
 import datetime
-
-""" from django.views.decorators.http import require_POST
-from .forms import CartAddProductForm """
-
-# Create your views here.
-
-""" 
-@require_POST
-def cart_add(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    form = CartAddProductForm(request.POST)
-    if form.is_valid():
-        cd = form.cleaned_data
-        cart.add(product=product,
-                 quantity=cd['quantity'],
-                 update_quantity=cd['update'])
-    return redirect('cart:cart_detail')
+from django.contrib.auth.decorators import login_required
 
 
-def cart_remove(request, product_id):
-    cart = Cart(request)
-    product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
-    return redirect('cart:cart_detail')
+#Add item to cart
 
-
-def cart_detail(request):
-    cart = Cart(request)
-    for item in cart:
-        item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
-                                                                   'update': True})
-    return render(request, 'cart/detail.html', {'cart': cart})
-
- """
-
-
-
-
-
-
-
+@login_required(login_url='login')
 def add_to_cart(request, product_id):
     item = get_object_or_404(Product, id=product_id)
     order_item, created = Cart.objects.get_or_create(
@@ -84,57 +48,6 @@ def add_to_cart(request, product_id):
 
 
 # Remove item from cart
-
-"""
-
-def remove_from_cart(request, product_id):
-    item = get_object_or_404(Product, id=product_id)
-    cart_qs = Cart.objects.filter(user=request.user, item=item)
-
-    if cart_qs.exists():
-        
-        cart = cart_qs[0]
-      #  print('remove from cart')
-      #  print (cart_qs, '----------------------------------',type(cart_qs), '>>>>>>>>>>>>>>>', cart_qs[0])
-       
-        # Checking the cart quantity
-    
-        cart_qs.delete()
-    order_qs = Order.objects.filter(
-        user=request.user,
-        ordered=False
-    )
-
-    #print(order_qs)
-
-    if order_qs.exists():
-        #print('---------Hey----------')
-        order = order_qs[0]
-        # check if the order item is in the order
-
-        if order.orderitems.filter(item__id=item.id).exists():
-           # print('----------Hello----------')
-            order_item = Cart.objects.filter(
-                item=item,
-                user=request.user,
-            )[0]
-            order.orderitems.remove(order_item)
-           
-            return redirect("carthome")
-        
-        
-        if order.get_totals()==0:
-            order_qs[0].delete()
-            return redirect("carthome")
-        else:
-           # messages.warning(request, "This item was not in your cart")
-            return redirect("carthome")
-    else:
-        #messages.warning(request, "You do not have an active order")
-        return redirect("carthome")
-
-
-"""
 
 def remove_from_cart(request, product_id):
 
@@ -279,17 +192,6 @@ def ordereditems(request, order_id):
        # return HttpResponse("<h1>Your Cart</h1>No items to show")
 
 
-
-"""
-def myorderview(request):
-
-    return render(request,'cart/myorderhome.html')
-
-"""
-"""
-def ordereditems(request):
-    return render(request,'cart/ordereditems.html')
-    """
 
 
 def cancelorder(request, order_id):
